@@ -1,56 +1,64 @@
 # Lecture 7
 
-## Architecure
+## Architecture
 
-### The view
+### La Vue
 
-Allows the user to interact with the software, often made of windows
+La vue permet à l'utilisateur d'interagir avec le logiciel. Elle est souvent composée de fenêtres.
 
-### The model
+### Le Modèle
 
-- It is where the data resides, made of one or more objects. It is the **Business logic layer**.
-- It must contain everything to determine the **state** of the UI and the **data** displayed.
+- Le modèle est l'endroit où résident les données. Il est constitué d'un ou plusieurs objets et représente la **couche de logique métier**.
+- Il doit contenir tout ce qui est nécessaire pour déterminer l'**état** de l'interface utilisateur et les **données** affichées.
 
-### The Controller
+### Le Contrôleur
 
-- The controller links the view and the model when a user action occurs on the view.
-- This object is responsible for controlling the data in the model
+- Le contrôleur fait le lien entre la vue et le modèle lorsqu'une action utilisateur se produit sur la vue.
+- Cet objet est responsable du contrôle des données dans le modèle.
 
-## The observer-observable
+## Le Pattern Observateur-Observable
 
-### Pattern
+### Schéma
 
-![alt text](observer-observable_pattern.png)
+![Schéma Observateur-Observable](observer-observable_pattern.png)
 
-Any modification to the model must be reflected in the view
+Toute modification du modèle doit être reflétée dans la vue.
 
 ### Interfaces
 
-*Only for example `@Deprecated`*
+*Exemple uniquement, `@Deprecated`*
 
 ```java
 public interface Observer {
-    void modelChanged ();
+    void modelChanged();
 }
 ```
 
 ```java
 public interface Observable {
-    boolean addObserver ( Observer observer );
-    boolean removeObserver ( Observer observer );
+    boolean addObserver(Observer observer);
+    boolean removeObserver(Observer observer);
 }
 ```
 
-### Operation
+### Fonctionnement
 
-- Any method that modifies the model (for example, setters) has been modified to notify the observers (views) so that they can refresh themselves. 
+- Toute méthode modifiant le modèle (par exemple, les setters) a été modifiée pour notifier les observateurs (vues) afin qu'ils puissent se rafraîchir.
+- L'observateur (la vue-fenêtre `FactoryViewer`) propage le message de rafraîchissement de manière hiérarchique à tous ses composants (widgets) nécessitant une mise à jour.
+- Le mécanisme est **automatisé**.
 
-- The observer (the view-window FactoryViewer ) propagates the refresh message hierarchically to all its components (widgets) that need to be refreshed. 
+### Contrôleur
 
-The mechanism is **automated**.
+![Schéma Contrôleur](controller.png)
 
-### Controller
+Le **pattern observateur-observable direct** est préféré car il permet d'avoir plusieurs vues sur les mêmes données.
 
-![alt text](controller.png)
+---
 
-The **direct observer-observable pattern** is preferred because it allows having multiple views on the same data
+### Points à vérifier :
+
+1. **Images** : Assurez-vous que les images `observer-observable_pattern.png` et `controller.png` sont correctement intégrées et visibles.
+2. **Exemples Concrets** : Si possible, ajoutez des exemples concrets pour illustrer l'utilisation du pattern Observateur-Observable dans une application réelle.
+3. **Automatisation** : Expliquez brièvement comment cette automatisation est mise en œuvre si nécessaire.
+
+Si vous avez besoin de plus d'aide ou de clarifications, n'hésitez pas à demander !
