@@ -52,11 +52,3 @@ public interface Observable {
 ![Controller](controller.png)
 
 The **direct observer-observable pattern** is preferred because it allows having multiple views on the same data.
-
----
-
-### Points to Check:
-
-1. **Images**: Ensure that the images `observer-observable_pattern.png` and `controller.png` are correctly integrated and visible.
-2. **Concrete Examples**: If possible, add concrete examples to illustrate the use of the Observer-Observable pattern in a real application.
-3. **Automation**: Briefly explain how this automation is implemented if necessary.

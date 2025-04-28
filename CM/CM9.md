@@ -21,12 +21,6 @@ public class Main {
     public static void main(String[] args) {
         LOGGER.info("Démarrage de la simulation...");
         LOGGER.config("Paramètres : " + Arrays.toString(args));
-        
-        try {
-            // Logique de simulation ici
-        } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "Erreur lors de la simulation", ex);
-        }
     }
 }
 ```
